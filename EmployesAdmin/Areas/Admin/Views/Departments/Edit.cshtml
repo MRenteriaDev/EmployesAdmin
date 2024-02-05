@@ -1,0 +1,32 @@
+﻿@model Department
+
+
+
+
+<form method="post" asp-area="Admin" asp-controller="Departments" asp-action="Create">
+    <div class="card">
+        <div class="card-header">
+            <div class="col-md-12 justify-content-between">
+                <h4 class="text-capitalize fw-bold">Actualizar Departamento @Model.Name</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="col-md-6">
+                <label asp-for="Name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" asp-for="Name">
+
+            </div>
+            <div class="col-md-12">
+                <label asp-for="Description" class="form-label">Descripción</label>
+                <textarea asp-for="Description" rows="3" cols="4" class="form-control">
+                </textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group-sm mt-4">
+                <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                <a class="btn btn-secondary btn-sm" asp-area="Admin" asp-controller="Departments" asp-action="Index">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>

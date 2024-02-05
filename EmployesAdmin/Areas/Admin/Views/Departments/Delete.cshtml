@@ -1,0 +1,22 @@
+﻿@model Department
+
+<form method="post" asp-area="Admin" asp-controller="Departments" asp-action="Delete">
+    <div class="card">
+        <div class="card-header">
+            <div class="col-md-12 justify-content-between">
+                <h4 class="text-capitalize fw-bold">Proceder a Eliminar?</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="col-md-6">
+                <input type="text" class="form-control" asp-for="Name" disabled>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group-sm mt-4">
+                <button type="submit" class="btn btn-primary btn-sm">Eliminar</button>
+                <a class="btn btn-secondary btn-sm" asp-area="Admin" asp-controller="Departments" asp-action="Index">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
