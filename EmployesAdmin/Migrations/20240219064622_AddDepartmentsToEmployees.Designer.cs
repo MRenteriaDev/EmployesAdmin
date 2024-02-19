@@ -4,6 +4,7 @@ using EmployesAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployesAdmin.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240219064622_AddDepartmentsToEmployees")]
+    partial class AddDepartmentsToEmployees
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +64,7 @@ namespace EmployesAdmin.Migrations
 
                     b.HasIndex("EmployeId");
 
-                    b.ToTable("Certifications", (string)null);
+                    b.ToTable("Certifications");
                 });
 
             modelBuilder.Entity("EmployesAdmin.Models.Department", b =>
@@ -88,7 +91,7 @@ namespace EmployesAdmin.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("EmployesAdmin.Models.Employe", b =>
@@ -129,11 +132,7 @@ namespace EmployesAdmin.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagePublicId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -166,7 +165,7 @@ namespace EmployesAdmin.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Employes", (string)null);
+                    b.ToTable("Employes");
                 });
 
             modelBuilder.Entity("EmployesAdmin.Models.EmployeesDocument", b =>
@@ -194,7 +193,7 @@ namespace EmployesAdmin.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("EmployeesDocument", (string)null);
+                    b.ToTable("EmployeesDocument");
                 });
 
             modelBuilder.Entity("EmployesAdmin.Models.PositionEmployee", b =>
@@ -232,7 +231,7 @@ namespace EmployesAdmin.Migrations
 
                     b.HasIndex("EmployeId");
 
-                    b.ToTable("PositionEmployees", (string)null);
+                    b.ToTable("PositionEmployees");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

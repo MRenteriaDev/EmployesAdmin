@@ -1,0 +1,109 @@
+﻿@model Employe
+
+<form method="post" asp-area="Admin" asp-controller="Employees" asp-action="Create" enctype="multipart/form-data">
+    <div class="card">
+        <div class="card-header">
+            <div class="col-md-12 justify-content-between">
+                <h4 class="text-capitalize text-primary fw-bold">Agregar Empleado</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="Name" class="form-label">Nombres</label>
+                    <input type="text" class="form-control" asp-for="Name">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="FirstLastName" class="form-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" asp-for="FirstLastName">
+                    <span class="text-danger" asp-validation-for="FirstLastName"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="SecondLastName" class="form-label">Apellido Materno</label>
+                    <input type="text" class="form-control" asp-for="SecondLastName">
+                    <span class="text-danger" asp-validation-for="SecondLastName"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="PhoneNumber" class="form-label">Número Telefónico</label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber">
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="BloodType" class="form-label">Tipo De Sangre</label>
+                    <input type="text" class="form-control" asp-for="BloodType">
+                    <span class="text-danger" asp-validation-for="BloodType"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="Genre" class="form-label">Género</label>
+                    <select class="form-select" aria-label="Seleccionar Género" asp-for="Genre">
+                        <option selected disabled>Seleccionar..</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="Genre"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="NoEmployee" class="form-label">Número Empleado</label>
+                    <input type="text" class="form-control" asp-for="NoEmployee">
+                    <span class="text-danger" asp-validation-for="NoEmployee"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="IdentificationNumber" class="form-label">Número INE</label>
+                    <input type="text" class="form-control" asp-for="IdentificationNumber">
+                    <span class="text-danger" asp-validation-for="IdentificationNumber"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="RFC" class="form-label">RFC</label>
+                    <input type="text" class="form-control" asp-for="RFC">
+                    <span class="text-danger" asp-validation-for="RFC"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="BirthDate" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" asp-for="BirthDate">
+                    <span class="text-danger" asp-validation-for="BirthDate"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="DepartmentId" class="form-label">Departmento</label>
+                    <select asp-items="ViewBag.DepartmentsList" class="form-control" id="dropdownSelector" asp-for="DepartmentId">
+                        <option disabled selected>--Seleccionar Departamento--</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="DepartmentId"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <label asp-for="Image" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" onchange="previewImage(event, '#imgPreview')" asp-for="Image">
+                    <span class="text-danger" asp-validation-for="Image"></span>
+                </div>
+                <div class="col-md-4 col-sm-6 mt-2">
+                    <img src="https://placehold.co/200x200/png" style="width: 100px; height:100px;" class="rounded float-start" alt="..." id="imgPreview">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mt-2">
+                    <label asp-for="Address" class="form-label">Domicilio</label>
+                    <textarea rows="3" type="text" class="form-control" asp-for="Address"></textarea>
+                    <span class="text-danger" asp-validation-for="Address"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group-sm mt-4">
+                <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                <a class="btn btn-secondary btn-sm" asp-area="Admin" asp-controller="Employees" asp-action="Index">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

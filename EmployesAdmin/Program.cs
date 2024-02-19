@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 using EmployesAdmin.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using EmployesAdmin.Helpers;
+using EmployesAdmin.Interfaces;
+using EmployesAdmin.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
     .AddEntityFrameworkStores<DataContext>();
 
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+
 
 builder.Services.AddMvc()
         .AddRazorPagesOptions(options => {

@@ -13,5 +13,8 @@ namespace EmployesAdmin.Data
         }
 
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Certification> Certifications { get; set; }
+        public DbSet<PositionEmployee> PositionEmployees { get; set; }
+        public DbSet<Employe> Employes { get; set; }
     }
 }

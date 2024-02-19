@@ -1,0 +1,50 @@
+﻿@model List<Employe>
+
+
+<!-- Page Heading -->
+<a class="btn btn-primary mb-2" asp-area="Admin" asp-controller="Employees" asp-action="Create">
+    <i class="fas fa-plus-square"></i> &nbsp;
+    Agregar Empleado
+</a>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Empleados</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Creado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NoEmployee</td>
+                            <td>@item.Name @item.FirstLastName @item.SecondLastName</td>
+                            <td>@item.Created</td>
+                            <td>
+                                <a class="btn btn-sm btn-info" asp-area="Admin" asp-controller="Employees" asp-action="Edit" asp-route-id="@item.Id">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a class="btn btn-sm btn-success" asp-area="Admin" asp-controller="Employees" asp-action="Detail" asp-route-id="@item.Id">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a class="btn btn-sm btn-danger" asp-area="Admin" asp-controller="Employees" asp-action="Delete" asp-route-id="@item.Id">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
